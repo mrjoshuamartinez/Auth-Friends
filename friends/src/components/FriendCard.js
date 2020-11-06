@@ -3,14 +3,19 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 export default function FriendCard(props) {
-    const removeHistory = useHistory();
     console.log("Props are: ", props.friends);
+    const history = useHistory();
     const removeFriend = e => {
         // console.log("This Friend ID is: ", e)
+        if (props.friends.length === 1) {
+            axiosWithAuth()
+            .delete(`http://localhost:5000/api/friends/${ props.friend.id }`)
+            history.push("/addFriend")
+        }
         axiosWithAuth()
         .delete(`http://localhost:5000/api/friends/${ props.friend.id }`)
         .then((res) => {
-            console.log(res.data)
+            console.log("Response from API for removeFriend: ", res.data)
         })
         .catch((err) => {
             console.log("Error for removeFriend: ", err)
