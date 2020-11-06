@@ -34,3 +34,6 @@ a, a:active, a:visited {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.span-hover span:hover {
+  color: red;
+}
