@@ -26,7 +26,10 @@ export default function Login() {
             localStorage.setItem("token", res.data.payload);
             history.push("/home")
         })
-        .catch((err) => console.log(`Error: `, err));
+        .catch((err) => {
+            console.log(`Error: `, err)
+            alert(`Please use "Lambda School" as userName and "i<3Lambd4" as password, Thank you!`)
+        });
     };
 
     return(
